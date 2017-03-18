@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>斌斌任务四</title>
+</head>
+<body>
+<!--CSS样式设置-->
+<style type="text/css">
+    *{font-family: "微软雅黑";}
+    .number
+    {
+        list-style: none;
+        float: left;
+        margin: 0 5px;
+        background-color: #fa0402;
+        color: white;
+        width: 30px;
+        top: 0;
+        left: 0;
+        text-align: center;
+        line-height: 30px;
+    }
+</style>
+
+<!--输入框&4个button-->
+<form>
+    <input id="text"  style="width: 60px" type="text" name="inputText"/>
+    <input type="button" name="button" value="左侧入" onclick="leftIn()"/>
+    <input type="button" name="button" value="右侧入" onclick="rightIn()"/>
+    <input type="button" name="button" value="左侧出" onclick="leftOut()"/>
+    <input type="button" name="button" value="右侧出" onclick="rightOut()"/>
+</form>
+<!--一组数据-->
+<ul id="myArray">
+    <li class="number" onclick="removeElement(this)">10</li>
+    <li class="number" onclick="removeElement(this)">3</li>
+    <li class="number" onclick="removeElement(this)">7</li>
+    <li class="number" onclick="removeElement(this)">12</li>
+    <li class="number" onclick="removeElement(this)">11</li>
+    <li class="number" onclick="removeElement(this)">30</li>
+</ul>
+
+<!--Script代码,ps:script代码在后面的话要测试就没法获得列表数据注意-->
+<script type="text/javascript">
+    //在JS中使用数组队列方法来实现，虽然麻烦但是为了熟悉队列的使用方法
+    //当点击左侧入时的JS代码
+    function leftIn()
+    {
+        var myNodes = document.getElementById("myArray"); //ul列表
+        var listArray = getArray(myNodes);                //获取数组
+        var textNode = document.getElementById("text");   //获取文本框中的数字
+        listArray.unshift(textNode.value);                //插入（删除）队列
+
+        updateList(listArray);
+    }
+    //当点击右侧入时的JS代码
+    function rightIn()
+    {
+        var myNodes = document.getElementById("myArray"); //ul列表
+        var listArray = getArray(myNodes);                //获取数组
+        var textNode = document.getElementById("text");   //获取文本框中的数字
+        listArray.push(textNode.value);                //插入（删除）队列
+        updateList(listArray);
+    }
+    //当点击左侧出时的JS代码
+    function leftOut()
+    {
+        var myNodes = document.getElementById("myArray"); //ul列表
+        var listArray = getArray(myNodes);                //获取数组
+        listArray.shift();                //插入（删除）队列
+        updateList(listArray);
+    }
+    //当点击右侧出时的JS代码
+    function rightOut()
+    {
+        var myNodes = document.getElementById("myArray"); //ul列表
+        var listArray = getArray(myNodes);                //获取数组
+        listArray.pop();                //插入（删除）队列
+        updateList(listArray);
+    }
+    //该功能可以获取li中的数组
+    function getArray(myNodes)
+    {
+        var array = new Array();
+        for(var i = 0, j = 0; i < myNodes.childNodes.length; i++)
+        {
+            if(myNodes.childNodes[i].innerHTML)
+            {
+                array[j++] = myNodes.childNodes[i].firstChild.nodeValue;
+            }
+        }
+        return array;
+    }
+    //更新列表
+    function updateList(newArray)
+    {
+
+        var ulNode = document.getElementById("myArray");
+        while (ulNode.hasChildNodes())
+        {
+            ulNode.removeChild(ulNode.firstChild);
+        }
+        for (var i = 0; i < newArray.length; i++)
+        {
+            var newLi = document.createElement("li");
+            newLi.innerHTML = newArray[i];
+            newLi.setAttribute("class","number");
+            newLi.setAttribute("onclick","removeElement(this)");
+            ulNode.appendChild(newLi);
+        }
+    }
+
+    //当点击任何一个数组元素将它从数组中移除
+    function removeElement(obj)
+    {
+        obj.parentNode.removeChild(obj);
+    }
+
+</script>
+</body>
+</html>
