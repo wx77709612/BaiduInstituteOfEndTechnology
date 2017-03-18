@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>斌斌任务五</title>
+</head>
+<body>
+<!--CSS样式设置-->
+<style type="text/css">
+    *{font-family: "微软雅黑";}
+    .number
+    {
+        list-style: none;/*不显示点
+        /*float: left;*/
+        /*margin: 0 5px;*/
+        background-color: #fa0402;
+        color: white;
+        width: 20px;
+        text-align: center;/*居中*/
+        /*line-height: 30px;*/
+        bottom:0px;
+        left:0px;
+        position:absolute;
+    }
+    ul
+    {
+        position:relative;
+        height: 200px;
+        border:2px solid #360;
+    }
+</style>
+
+<!--输入框&4个button-->
+<form>
+    <input id="text"  style="width: 60px" type="text" name="inputText" />
+    <input type="button" name="button" value="左侧入" onclick="leftIn()"/>
+    <input type="button" name="button" value="右侧入" onclick="rightIn()"/>
+    <input type="button" name="button" value="左侧出" onclick="leftOut()"/>
+    <input type="button" name="button" value="右侧出" onclick="rightOut()"/>
+    <input type="button" name="sortButton" value="排序" onclick="sortArray()"/>
+</form>
+<!--一组数据-->
+<ul id="myArray">
+    <li class="number" style="height:20px " onclick="removeElement(this)">10</li>
+    <li class="number" style="height:6px;left:25px" onclick="removeElement(this)">3</li>
+    <li class="number" style="height:14px;left:50px" onclick="removeElement(this)">7</li>
+    <li class="number" style="height:24px;left:75px" onclick="removeElement(this)">12</li>
+    <li class="number" style="height:22px;left:100px" onclick="removeElement(this)">11</li>
+    <li class="number" style="height:60px;left:125px" onclick="removeElement(this)">30</li>
+
+</ul>
+
+<!--Script代码,ps:script代码在后面的话要测试就没法获得列表数据注意-->
+<script type="text/javascript">
+    //在JS中使用数组队列方法来实现，虽然麻烦但是为了熟悉队列的使用方法
+    //当点击左侧入时的JS代码
+    function leftIn()
+    {
+        var myNodes = document.getElementById("myArray"); //ul列表
+        var listArray = getArray(myNodes);                //获取数组
+        var textNode = document.getElementById("text");   //获取文本框中的数字
+
+        if(between10And100(textNode.value)&&isFull(listArray))//满足0~100和数组元素小于60
+        {
+            listArray.unshift(textNode.value);                //插入（删除）队列
+            updateList(listArray);
+        }
+    }
+    //当点击右侧入时的JS代码
+    function rightIn()
+    {
+        var myNodes = document.getElementById("myArray"); //ul列表
+        var listArray = getArray(myNodes);                //获取数组
+        var textNode = document.getElementById("text");   //获取文本框中的数字
+
+        if(between10And100(textNode.value)&&isFull(listArray))
+        {
+            listArray.push(textNode.value);                //插入（删除）队列
+            updateList(listArray);
+        }
+
+
+    }
+    //当点击左侧出时的JS代码
+    function leftOut()
+    {
+        var myNodes = document.getElementById("myArray"); //ul列表
+        var listArray = getArray(myNodes);                //获取数组
+        listArray.shift();                //插入（删除）队列
+        updateList(listArray);
+    }
+    //当点击右侧出时的JS代码
+    function rightOut()
+    {
+        var myNodes = document.getElementById("myArray"); //ul列表
+        var listArray = getArray(myNodes);                //获取数组
+        listArray.pop();                //插入（删除）队列
+        updateList(listArray);
+    }
+    //该功能可以获取li中的数组
+    function getArray(myNodes)
+    {
+        var array = new Array();
+        for(var i = 0, j = 0; i < myNodes.childNodes.length; i++)//遍历ul树，找到内容非空节点，赋给数组元素
+        {
+            if(myNodes.childNodes[i].innerHTML)
+            {
+                array[j++] = myNodes.childNodes[i].firstChild.nodeValue;
+            }
+        }
+        return array;
+    }
+    //更新列表
+    function updateList(newArray)
+    {
+
+        var ulNode = document.getElementById("myArray");
+        while (ulNode.hasChildNodes())//删除所有li元素
+        {
+            ulNode.removeChild(ulNode.firstChild);
+        }
+
+        for (var i = 0; i < newArray.length; i++)//将新数组添加进去并设置属性
+        {
+            var newLi = document.createElement("li");
+            newLi.innerHTML = newArray[i];
+            newLi.setAttribute("class","number");
+            newLi.setAttribute("onclick","removeElement(this)");
+            newLi.setAttribute("style","height:" + newArray[i]*2+"px;left:"+i*25+"px");
+            ulNode.appendChild(newLi);
+        }
+    }
+
+    //当点击任何一个数组元素将它从数组中移除
+    function removeElement(obj)
+    {
+        obj.parentNode.removeChild(obj);
+    }
+
+    //判断输入是否为10~100之间
+    function between10And100(num)
+    {
+
+        if(parseInt(num) > 10 && parseInt(num) < 100)
+        {
+            return 1;
+        }
+        else
+        {
+            alert("请输入10到100之间的数字");
+            return 0;
+        }
+    }
+
+    //判断队列长度是否大于等于60，等于60时也不能再插入了
+    function isFull(array)
+    {
+        if (array.length >= 60)  //因为要alert所以用的if而非条件表达式
+        {
+            alert("超过60个，不能再输入了");
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
+    }
+    //排序
+    function sortArray()
+    {
+        var myNodes = document.getElementById("myArray");
+        var listArray = getArray(myNodes);
+        listArray.sort(function(a,b){
+            return a-b;
+        });//升序排列
+        updateList(listArray);
+    }
+
+</script>
+</body>
+</html>
