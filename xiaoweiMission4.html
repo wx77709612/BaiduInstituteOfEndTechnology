@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>xiaoweiMission4</title>
+<style type="text/css">
+	/*/这里我设置父元素的position属性为relative时反而无法水平垂直居中不知为何*/
+	#grayBox{
+		background-color: #CCCCCC;
+		width: 400px;
+		height: 200px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -100px 0 0 -200px;
+	}
+	.yellowSector{
+		width: 0;
+		height: 0;
+		border-radius: 50px;
+		border: 50px solid transparent;
+		border-top-color: #fc0;
+	}
+	#sector1{
+		transform: rotate(135deg);
+		margin: -50px;
+	}
+	#sector2{
+		transform: rotate(-45deg);
+		margin: 150px 350px;
+	}
+</style>
+</head>
+
+<body>
+	<div id="grayBox">
+		<div class="yellowSector" id="sector1"> 
+		</div>	
+		<div class="yellowSector" id="sector2">
+		</div>		
+	</div>
+</body>
+</html>
