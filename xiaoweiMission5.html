@@ -1,0 +1,308 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>小薇任务5</title>
+</head>
+
+<style type="text/css">
+	body{
+		background-color:rgba(222,222,222,1.00);
+		font-family: "微软雅黑";
+	}
+	.head{
+		height: 60px;
+		background-color: #333;
+		background-image:url(picture/百度logo.jpg);
+		background-repeat: no-repeat;
+		border: 1px solid #333333;	
+		width: 100%;
+	}
+	.navigation{
+		float: right;
+		margin: 0 30px 0 0;
+		
+	}
+	.headNavigation{
+		text-decoration: none;
+		font-size: 13px;
+		color: aliceblue;
+	}
+	#context{
+		margin-top: 80px;
+	}
+	.mainBody{
+		border: 1px solid rgba(224,224,224,1.00);
+		background-color: white;
+		box-shadow: 2px 2px gray;
+		padding: 20px 20px;
+		margin: 10px 350px 10px 10px;
+	}
+	#sideBar{
+		border: 1px solid rgba(224,224,224,1.00);
+		background-color: white;
+		box-shadow: 2px 2px gray;
+		padding: 20px 20px;
+		position: absolute;
+		right: 0px;
+		width: 300px;
+	}
+	h1{
+		font-size: 22px;
+	}
+	h2{
+		font-size: 17px;
+		color: gray;
+	}
+	h4{
+		font-size: 10px;
+		color: darkgrey;
+	}
+	p{
+		
+		font-size: 14px;
+	}
+	.List{
+		list-style-type: none;
+		font-size: 15px;
+		margin: 5px 0 0 -30px;
+	}
+	.imgBorder{
+		display: inline-block;
+		border: 1px solid gray;
+		width: 150px;
+		height: 160px;
+		margin: 5px 10px;
+	}
+	.insideImgborder{
+		width: 80%;
+		text-align: center;
+		margin: 0px auto;
+		margin-bottom: 10px;
+		display: block;
+	}
+	h5{
+		font-size: 4px;
+		margin: 10px 45px 20px;
+	}
+	#onlyTable{
+		width: 100%;
+		border-collapse: collapse;
+	}
+	th{
+		background-color: rgba(26,26,26,1.00);
+		color: white;
+	}
+	.total{
+		background-color: darkgray;
+	}
+	
+	#theForm{
+		font-size: 6px;
+		line-height: 30px;
+	}
+	#nameOftextbox{
+	}
+	#keybox1{
+		margin-left: 24px;
+	}
+	#keybox2{
+		display: inline-block;
+	}
+	.textBox{
+		margin-left: 10px;
+	}
+	.notaText{
+		display: block;
+		margin-left: 94px;
+		margin-bottom: 10px;
+		color: darkgray;
+	}
+	#gender{
+		margin-left:53px;
+		margin-right: 10px;
+	}
+	#city{
+		margin-left: 53px;
+		margin-right: 10px;
+	}
+	#allHobby{
+		margin-left: 53px;
+		margin-right: 10px;
+	}
+	#describe{
+		margin-left: 29px;
+		margin-right: 10px;
+	}
+	#describeArea{
+		float: right;
+		margin-right: 30px;
+	}
+	#isok{
+		margin-top: 10px;
+		width: 100%;
+		color: white;
+		background-color: rgba(53,94,253,1.00);
+		line-height: 30px;
+		font-size: 15px;
+		font-family: "微软雅黑";
+		border-radius: 10px;
+		
+	}
+	#footer{
+		height: 60px;
+		background-color: #333;
+		border: 1px solid #333333;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	#copyRight{
+		color: white;
+	}
+</style>
+<body>
+
+	<div class="head">
+		<ul>
+			<li class="navigation"><a class="headNavigation" href="">导航链接四</a></li>
+			<li class="navigation"><a class="headNavigation" href="">导航链接三</a></li>
+			<li class="navigation"><a class="headNavigation" href="">导航链接二</a></li>
+			<li class="navigation"><a class="headNavigation" href="">导航链接一</a></li>
+		</ul>
+	<div>
+	<div id="context">
+	<div id="sideBar">
+			<h2>这里是最后一个侧栏，这是标题</h2>
+			<form id="theForm" action="save.php" method="post">
+				<label id ="nameOftextbox">请输入邮箱地址</label><input class="textBox" name="emailAddress" type="text" value="这是一个文本输入框">
+				<span class="notaText">邮箱地址请按照要求格式输入</span>
+				<label id="keybox1">请输入密码</label><input class="textBox" name="myPassword" type="password" value="1234567"> 
+				<label id="keybox2">请重复输入密码</label><input class="textBox" name="myPassword" type="password" value="1234567"> 
+				<span class="notaText">密码请为6-16位英文数字</span>
+				<label id="gender">性别</label><input type="radio" name="myGender" value="1" checked="checked"><label>男</label><input type="radio" name="myGender" value="2"><label>女</label>
+				<br>
+				<label id="city">城市</label>
+				<select>
+					<option value="1" selected="selected">北京</option>
+					<option value="2">上海</option>
+					<option value="3">广州</option>
+					<option value="4">成都</option>
+				</select>
+				<br>
+				<label id="allHobby">爱好</label>
+				<input type="checkbox" name="hobby" value="1"><label>体育</label>
+				<input type="checkbox" name="hobby" value="2"><label>音乐</label>
+				<input type="checkbox" name="hobby" value="3"><label>书法</label>
+				<br>
+				<label id="describe">个人描述</label>
+				<textarea id="describeArea" rows="3" cols="22"></textarea>
+				<input id="isok" type="submit" name="ok" value="确认提交">
+			</form>
+		</div>
+		<div class="mainBody">
+			<h1>文章一级标题</h1>
+			<h2>文章二级标题</h2>
+			<h4>文章作者 文章发表时间</h4>
+			<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，</p>
+			<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，</p>
+			<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，</p>
+			<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，</p>
+			<img src="picture/小薇图片1.jpg">
+			<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，换行了<br/>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，</p>
+		</div>
+		<div class="mainBody">
+			<h1>另一篇文章一级标题</h1>
+			<h2>文章二级标题</h2>
+			<h4>文章作者 文章发表时间</h4>
+			<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，</p>
+			<p>这是一个很长很长的段落，这是一个很长很长的段落，<a href="http://life.baidu.com">这里有一个链接连接到http://life.baidu.com</a>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，</p>
+			<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，</p>
+			<p>这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，这是一个很长很长的段落，</p>
+			<img src="picture/小薇图片1.jpg">
+			<ul>
+				<li class="List">列表项目一</li>
+				<li class="List">列表项目二</li>
+				<li class="List">列表项目三</li>
+			</ul>
+		</div>
+		<div class="mainBody">
+		<h1>图片</h1>
+			<div class="imgBorder">
+				<h5>好看的图片</h5>
+				<img class="insideImgborder" src="picture/小薇图片1.jpg">
+			</div>
+			<div class="imgBorder">
+				<h5>好看的图片</h5>
+				<img class="insideImgborder" src="picture/小薇图片1.jpg">
+			</div>
+			<div class="imgBorder">
+				<h5>好看的图片</h5>
+				<img class="insideImgborder" src="picture/小薇图片1.jpg">
+			</div>
+			<div class="imgBorder">
+				<h5>好看的图片</h5>
+				<img class="insideImgborder" src="picture/小薇图片1.jpg">
+			</div>
+			<div class="imgBorder">
+				<h5>好看的图片</h5>
+				<img class="insideImgborder" src="picture/小薇图片1.jpg">
+			</div>
+			<div  class="imgBorder">
+				<h5>好看的图片</h5>
+				<img class="insideImgborder" src="picture/小薇图片1.jpg">
+			</div>
+			<div class="imgBorder">
+				<h5>好看的图片</h5>
+				<img class="insideImgborder" src="picture/小薇图片1.jpg">
+			</div>
+		</div>
+		<div class="mainBody">
+			<h1>最后一篇文章一级标题</h1>
+			<h2>文章二级标题</h2>
+			<h4>文章作者 文章发表时间</h4>
+			<ol>
+				<li>排名1</li>
+				<li>排名2</li>
+				<li>排名3</li>
+			</ol>
+			<table border="1px" id="onlyTable">
+				<tr>
+					<th>表头</th>
+					<th>表头</th>
+					<th>表头</th>
+				</tr>
+				<tr>
+					<td>表内容单元格</td>
+					<td>表内容单元格</td>
+					<td><a href="">操作</a></td>
+				</tr>
+				<tr>
+					<td>表内容单元格</td>
+					<td>表内容单元格</td>
+					<td><a href="">操作</a></td>
+				</tr>
+				<tr>
+					<td>表内容单元格</td>
+					<td>表内容单元格</td>
+					<td><a href="">操作</a></td>
+				</tr>
+				<tr>
+					<td>表内容单元格</td>
+					<td>表内容单元格</td>
+					<td><a href="">操作</a></td>
+				</tr>
+				<tr>
+					<td class="total">总计</td>
+					<td class="total" colspan="2">1000</td>
+				</tr>
+			</table>
+		</div>
+		
+		<div id="footer">
+			<span id="copyRight">版权所有©</span>
+		</div>
+	</div>
+</body>
+</html>

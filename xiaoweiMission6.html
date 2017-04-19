@@ -1,0 +1,431 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>小薇任务6</title>
+
+<style type="text/css">
+	*{padding: 0;margin: 0;border: 0;}
+	body{
+		width: 980px;
+		height: 1386px;
+	}
+	#header,#footer{
+		margin: 0 auto;
+		width: 892px;
+		height: 61px;
+		font-family: "黑体";
+		font-size: 12px;
+	}
+	#header{
+		line-height: 100px;
+	}
+	#footer{
+		/*因为没有加mainBody内容 所以之前的浮动会影响footer中的span*/
+		/*所以清除一下，消除影响使之顶格*/
+		clear: both;
+	}
+	#webSite1{
+		float: left;
+		/*因为没有多写一个div，但是内容又没有顶格，所以设置了padding-lef*/
+		/*但是设置了padding后会变长一截所以把width擅自缩短5px，方便设置padding，但实际宽度还是110px*/
+		width: 105px;
+		height: 61px;
+		background-color: rgba(212,93,92,1.00);
+		color: white;
+		padding-left: 5px;
+	}
+	#dateInHeader,#webSite2{
+		color: #d45d5c;
+		float: right;
+	}
+	#mainBody{
+		width: 892px;
+		height: 1264px;
+		border-bottom: 1px solid #938e8c;
+		border-top: 2px solid #938e8c;
+		margin: 0 auto;
+	}
+	#topPart{
+		position: relative;
+		height: 301px;
+		
+		/*margin不知道设置多少，看情况吧 只设置了上边*/
+		margin: 30px 0 0;
+	}
+	#topLeft{
+		width: 641px;
+		height: 301px; 
+		background-image: url("task_1_6_1.jpg");
+	}
+	.colorBox{
+		width: 191px;
+		height: 301px;
+		/*透明度乱设置的 看着像*/	
+		opacity: 0.3;
+	}
+	#leftGreen{
+		float: left;
+		background-color: green;
+	}
+	#rightRed{
+		float: right;
+		background-color: hotpink;
+	}
+	#topRight{
+		top: 0px;
+		left: 687px;
+		position: absolute;
+		height: 301px;
+		width: 203px;
+		border-top: 2px solid #cc8091;
+	}
+	.topRightTitle{
+		/*看起来不像24ps 于是擅自修改成18px = = */
+		font: 18px "微软雅黑";
+		border-bottom: 2px solid;	
+		height: 28px;
+	}
+	#topRightTitle1{
+		width: 65px;
+		margin-top: 5px;
+	}
+	#topRightTitle2{
+		width: 127px;
+	}
+	.topRightTitleFrist{
+		font-size: 24px;
+	}
+	#aboutTechnology{
+		/*好像斜体是这个*/
+		font: oblique 12px "楷体";
+		margin: 2px 0 12px;
+	}
+	#greenNumber{
+		font: oblique 116px "微软雅黑";
+		color: #75b86b;
+		/*不知道为什么会网右边移了一些margin负一下好了 我感觉这个数字还加粗了*/
+		margin-left: -15px;
+		height: 130px
+	}
+	#redNumber{
+		font: 55px "微软雅黑";
+		color: #cc8091;
+		float: left;
+	}
+	#besideRedNumber{
+		float: right;
+		font: 12px "微软雅黑";
+		margin-top: 28px;
+		margin-right: 30px;
+		color: darkgray;
+		line-height: 1px;
+	}
+	#redString{
+		font: 21px "微软雅黑";
+		color: #cc8091;
+		margin-top: 100px;
+	}
+	#middlePart{
+		width: 641px;
+		/*其实高度可以不用设置，为了方便设置一个好看，可删*/
+		height: 200px;
+		margin-top: 20px;
+		font: 12px "微软雅黑";
+		color: #231815;
+		opacity: 0.7;
+		position: relative;
+	}
+	#what{
+		margin: 16px 16px 0 0;;
+		display: inline-block;
+		width: 35%;
+		height: 80%;
+		position: absolute;
+	}
+	#when{
+		display: inline-block;
+		width: 30%;
+		margin: 16px 16px 0 0;
+		height: 80%;
+		position: absolute;
+		left: 38%;
+	}
+	#how{
+		display: inline-block;
+		width: 25%;
+		margin: 16px 16px 0 0;
+		height: 80%;
+		position: absolute;
+		left: 72%;
+	}
+	#what>h3{
+		color: green;
+		font: 16px;
+		text-decoration: underline;
+	}
+	#when>h3{
+		color: #d2994f;
+		font: 16px;
+		text-decoration: underline;
+	}
+	#how>h3{
+		color: #CC7680;
+		font: 16px;
+		text-decoration: underline;
+	}
+	.textInMiddle{
+		margin-top: 5px;
+	}
+	#whatList{
+		list-style-type: none;
+		margin: 30px 5px;
+		font: 12px "微软雅黑"； 
+	}
+	.pinkNumber{
+		font-style: oblique;
+		color: #cd4a48;
+	}
+	#bottomPart{
+		width: 100%;
+		margin: 80px 0 0 0;
+		height: 600px;
+		position: relative;
+	}
+	#bottomTitle{
+		position: absolute;
+		width: 415px;
+		border-bottom: 2px solid #11456b;
+	}
+	#bottomTitle1{
+		font: 700 42px "黑体";
+		color: #11456b;
+		line-height: 16px;
+	}
+	#firstThe{
+		font: oblique 72px "黑体";
+		color: #f5e327;
+	}
+	#bottomTitle2{
+		font: 700 33px "黑体";
+		color: #11456b;
+		margin: 16px 0;
+	}
+	#bottomAritcle{
+		width: 415px;
+		position: absolute;
+		top: 200px;
+		font: 12px "宋体";
+		color: #767777;
+		opacity: 0.7;
+		line-height: 16px;
+	}
+	#fristCharacter{
+		float: left;
+		font: 70px "微软雅黑";
+		color: #f5e327;
+		margin-top: -13px;
+		margin-right: 13px;
+	}
+	#bottomTextImg{
+		float: right;
+		margin: 12px;
+		}
+	#bottomText2,#bottomText3{
+		text-indent: 24px;
+	}
+	#bottomImg{
+		position: absolute;
+		right: 0px;
+		height: 275px;
+		width: 458px;
+	}
+	#insideBottomRightImg{
+	width: 458px;
+	height: 61px;
+	background-color: rgba(0,0,0,0.4);
+	position: absolute;
+	bottom: 16px;
+	}
+	#whiteCharactor{
+		color: #ffffff;
+		font: 26px "微软雅黑";
+		height: 44px;
+		border-left: 3px solid #72b16a;
+		line-height: 61px;
+		margin-left: 30px;
+		padding-left: 15px;
+	}
+	#greenCharactor{
+		color: #72b16a;
+		font: oblique 12px  "微软雅黑";
+		letter-spacing: 140%;
+	}
+	#bottomListAndElse{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 458px;
+		height: 318px;
+		background-color: rgba(238,238,214,1.00)
+	}
+	#bottomList{
+		list-style-type: none;
+		margin: 25px;
+		font: 16px "宋体";
+		color: #5a5b5b;
+	}
+	#bottomList>li{
+		margin-bottom: 20px;
+	}
+	.trangle{
+		display: inline-block;
+		margin-right: 10px;
+		width: 0;
+		height: 0;
+		border-left: 4px solid transparent;
+		border-right: 4px solid transparent;
+		border-bottom: 8px solid rgba(24,69,102,1.00);
+	}
+	.spanInList{
+		font: oblique 12px "宋体";
+		color: #5a5b5b;
+	}
+	#bottomDiv{
+		background-color: #d45d5c;
+		width: 260px;
+		height: 160px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #fff;
+	}
+	#zero{
+		font: 110px "微软雅黑";
+		margin: 0 5px 0 10px;
+		
+	}
+	#helloWorldDiv{
+		border-left: 2px solid;
+		height: 86px;
+	}
+	#oneTwo,#threeFourFive{
+		font: 21px "黑体";
+		display: block;
+		margin-left: 10px;		
+	}
+	#helloWorld{
+		font: 12px "黑体";
+		margin-left: 10px;
+		margin-top: 6px;
+	}
+	#helloWorldIn{
+		float: right;
+		width: 180px;
+		font: oblique 14px "黑体";
+		color: #5a5b5b;
+		position: relative;
+		margin-top: -130px;
+		text-indent: 30px;
+	}
+	.queto{
+	display: inline-block;
+	font: 72px "黑体";
+	color: #d45d5c;
+	position: absolute;
+	}
+	#queto1{
+		top:-20px;
+		left: -70px;
+	}
+	#queto2{
+		left: 90px;
+		top: 60px;
+	}
+	
+</style>
+
+</head>
+
+<body>
+<div id="header">
+	<span id="webSite1">ife.baidu.com</span>
+	<span id="dateInHeader">2016.03</span>
+</div>
+<div id="mainBody">
+	<div id="topPart">
+		<div id="topLeft">
+			<div id="leftGreen" class="colorBox"></div>
+			<div id="rightRed" class="colorBox"></div>
+		</div>
+		<div id="topRight">
+			<p class="topRightTitle" id="topRightTitle1"><span class="topRightTitleFrist">A</span>BOUT</p>
+			<p class="topRightTitle" id="topRightTitle2"><span class="topRightTitleFrist">T</span>ECHNOLOGE</p>
+			<p id="aboutTechnology">About technologe about technologe about technologe</p>
+			<p id="greenNumber">700</p>
+			<span id="redNumber">3.2</span>
+			<p id="besideRedNumber"><span id="redString">css</span><br>csssscssscsscss</p>
+		
+		</div>
+	</div>
+	<div id="middlePart">
+		<div id="what">
+			<h3>What</h3>
+			<p class="textInMiddle">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+		</div>
+		<div id="when">
+			<h3>When</h3>
+			<p class="textInMiddle">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前</p>
+		</div>
+		<div id="how">
+			<h3>How</h3>
+			<p class="textInMiddle">前端前端前端前端前端前端前端前端前端前端前端前前端前端前端前端前端前端前端</p>
+			<ul id=whatList>
+				<li>What-------- <span class="pinkNumber">40%</span></li>
+				<li>What-------- <span class="pinkNumber">30%</span></li>
+				<li>What-------- <span class="pinkNumber">30%</span></li>
+			</ul>
+		</div>
+	</div>
+	<div id="bottomPart">
+		<div id="bottomTitle">
+			<h2 id="bottomTitle1"><span id="firstThe">THE</span> TECHNOLOGE <br>OF FRONT</h2>
+			<h2 id="bottomTitle2">前端技术领域</h2>
+		</div>
+		<div id="bottomAritcle">
+			<p id="bottomText1"><span id="fristCharacter">前</span>端前端前端前端前端前端前端端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端<img id="bottomTextImg" src="任务6图片_0000s_0007s_0002_配图三.jpg" width="168" height="290" alt=""/>前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+			
+			<p id="bottomText2">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+			<p id="bottomText3">前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+			
+		</div>
+		<div id="bottomImg">
+			<img id="bottomRightImg" src="任务图片6.jpg" width="458" height="258" alt=""/> 
+			<div id="insideBottomRightImg">
+				<span id="whiteCharactor">前端技术</span>
+				<span id="greenCharactor">前端技术前端技术</span>
+			</div>
+		</div>
+		<div id="bottomListAndElse">
+			<ul	id="bottomList">
+				<li><span class="trangle"></span>前端前端前端前端前端 ........................<span class="spanInList">前端</span></li>
+				<li><span class="trangle"></span>前端前端前端 ...............................<span class="spanInList">前端前</span></li>
+				<li><span class="trangle"></span>前端前端前端前端前端前端 ....................<span class="spanInList">前端</span></li>
+			</ul>
+			<div id="bottomDiv">
+				<span id="zero">0</span>
+				<div id="helloWorldDiv">
+					<span id="oneTwo">ONE TWO</span>
+					<span id="threeFourFive">THREE FOUR FIVE</span>
+					<p id="helloWorld">hello world hello world hello world</p>
+				</div>
+			</div>
+			<p id="helloWorldIn"><span class="queto" id="queto1">“</span>hello world hello world hello world hello world hello world hello world hello world hello world hello world<span class="queto" id="queto2">”</span></p>
+		</div>
+	</div>
+</div>
+<div id="footer">
+	<span id="webSite2">ife.baidu.com</span>
+</div>
+</body>
+</html>
