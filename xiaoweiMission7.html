@@ -1,0 +1,667 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>小薇任务7</title>
+<style type="text/css">
+	/*没有给定大小我看感觉来啦*/
+	*{padding: 0;margin: 0;border: 0;}	
+	body{
+		width: 1280px;
+		height: 2000px;
+	}
+	#header{
+		
+		height: 55px;
+		line-height: 55px;
+		position: relative;
+		
+	}
+	#newWorld{
+		font: 22px "黑体";
+		margin-left: 100px;
+	}
+	#headerBookImg{
+		vertical-align: middle;
+	}
+	#headerCatalog{
+		float: right;
+		font: 15px "微软雅黑";
+		color: rgba(144,148,151,1.00);
+		border-spacing: 30px 0;
+	}
+	.headerCatalogTr>td{
+		padding: 15px 0px 10px 0px;
+		border-bottom: 3px solid rgba(231,78,72,0.00);
+	}
+	#homePage{
+		color: rgba(231,78,72,1.00);
+		border-bottom: 3px solid rgba(231,78,72,1.00);
+	} 
+	#signUpLogo{
+		vertical-align: middle;
+	}
+	#signUp{
+		color: rgba(231,78,72,1.00);
+		vertical-align: middle;
+	}
+	#footer{
+		width: 1280px;
+		height: 413px; 
+		border: 1px solid black;
+		background: rgba(48,48,58,1.00);
+		color: white;			
+	}
+	#contactUs{
+		height: 360px;
+		background: rgba(51,54,63,1.00);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	#contactUs>h3{
+		font: 22px "黑体";
+		margin-bottom: 10px;
+	}
+	#contactUs>p{
+		font: 10px "宋体";
+		margin-bottom: 5px;
+	}
+	#customsEmailBox{
+		font: 15px "微软雅黑";
+		width: 330px;
+		height: 40px;
+		color: rgba(0,0,0,0.3);
+		padding: 0 5px;
+		margin: 20px;
+		vertical-align: middle;
+		
+	}
+	#customsEmailSubmit{
+		width: 80px;
+		height: 40px;
+		margin-left: -28px;
+		font: 15px "黑体";
+		vertical-align: middle;
+		background-color: rgba(113,113,121,1.00);
+		color: white;		
+	}
+	#authority{
+		font: 10px "微软雅黑";
+		line-height: 60px;
+	}
+	#authority>span>a:link{
+		text-decoration: none;
+		color: white;
+	}
+	#authority>span>a:visited{
+		text-decoration: none;
+		color: white;
+	}
+	#mainbody{
+		position: relative;
+	}
+	#part1{
+		box-sizing: border-box;
+		width: 1280px;
+		height: 854px;
+		position: absolute;
+		top: 3px;
+		background: rgba(0,0,0,0.2);
+		color: white;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
+		padding-left: 120px
+	}
+	#part1Header{
+		font: 50px "微软雅黑";
+		margin-bottom: 20px;
+	}
+	#part1Text{
+		font: 20px "微软雅黑";
+		width: 300px;
+		margin-bottom: 60px;
+	}
+	#part1Button{
+		color: white;
+		width: 327px;
+		height: 60px;
+		background-color: rgba(232,80,79,1.00);
+		font: 28px "微软雅黑";
+		letter-spacing: 5px;
+	}
+	#part2{
+		/*因为图是手工裁剪所以大小不一导致文字位置不一样高，为了好看单独对每副图像和文字设置行高*/
+		display: flex;
+		color: rgba(159,159,159,1.00);
+		font: 14px "黑体";
+	}
+	.divInPart2{
+		width: 325px;
+		height: 250px;
+		box-sizing: border-box;
+		text-align: center;
+		padding: 30px 0;;
+		/*流模型会放大每张图片，不知道为啥什么*/
+	}
+	.divInPart2>img{
+		vertical-align: middle;
+	}
+	.divInPart2>p{
+		height: 50px;
+		padding: 0 80px;
+		margin-top: 40px;
+		border-right: 2px solid rgba(159,159,159,1.00);
+		/*因为手工裁的图像大小不一样，所以手工调了一下最后一个div*/
+	}
+	#part3{
+		box-sizing: border-box;
+		height: 365px;
+		background: white;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		/*尴尬，手工裁图所以书的背景是白的干脆就不要这个div的背景了吧*/
+	}
+	#part3>h1{
+		color: rgba(159,159,159,1.00);
+		font: 50px "黑体";
+	}
+	#part4{
+		position: relative;
+	}
+	#divInPart4{
+		position: absolute;
+		top: 0px;
+		background-color: rgba(189,29,32,0.1);
+		/*裁图裁少了1px*/
+		width: 1279px;
+		height: 328px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: white;
+	}
+	#divInPart4>h2{
+		font: 21px "微软雅黑";
+	}
+	.line{
+		width: 30px;
+		border: 1px solid;
+		margin: 20px 0;
+	}
+	#divInPart4>p{
+		font: 10px "微软雅黑";
+		margin-bottom: 40px;
+	}
+	#formInPart4{
+		margin-bottom: 70px;
+	}
+	.searchCityActive{
+		width: 235px;
+		height: 35px;
+		padding: 5px;
+		color: rgba(159,159,159,1.00);
+		font-family: "微软雅黑";
+		background: transparent;
+		-webkit-appearance: none; 
+		box-sizing: border-box;
+	}
+	#formInPart4>button{
+		width: 235px;
+		height: 35px;
+		background: rgba(191,78,72,1.00);
+		color: white;
+		font: 14px "微软雅黑";
+		letter-spacing: 25px;
+		padding-left: 25px;
+		vertical-align: middle;
+		margin:0 10px;
+	}
+	.selecStyle{
+		display: inline-block;
+		width: 210x;
+		height: 35px;
+		overflow: hidden;
+		vertical-align: middle;
+		margin: 0 10px;
+		background: url(%E4%BB%BB%E5%8A%A1%E5%9B%BE%E7%89%87/%E4%BB%BB%E5%8A%A17/360%E6%88%AA%E5%9B%BE20170420105357466.jpg) no-repeat #fff;
+		background-position: 210px 8px;
+	}
+	.searchCityActive>option{
+		border: 1px solid rgba(191,78,72,1.00);
+		background-color: white;
+	
+		-webkit-tap-highlight-color: rgba(191,78,72,1.00); 
+	}
+	#part5{
+		/*仍然是截图问题 不上背景色了。。*/
+		width: 100%;
+		height: 600px;
+		position: relative;
+	}
+	#part5>img{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -200px 0 0 -501px;
+	}
+	.part5Content{
+		position: absolute;
+		z-index: 99; 
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-family: "微软雅黑"; 
+		line-height: 30px;
+	}
+	.part5Content>h5{
+		font-size: 14px;
+		color: rgba(93,93,93,1.00)
+	}
+	.part5Content>p{
+		font-size: 12px;
+		color: darkgray;
+	}
+	#part5Content1{
+		top: 450px;
+		left: 220px;
+	}
+	#part5Content2{
+		top: 104px;
+		left: 415px;		
+	}
+	#part5Content2>h5{
+		font-size: 20px;
+		letter-spacing: 40px;
+	}
+	#part5Content2>p{
+		padding-right: 40px;
+	}
+	#part5Content3{
+		top: 450px;
+		left: 720px;
+	}
+	#part5Content4{
+		top: 450px;
+		left: 980px;
+	}
+	#part6{
+		position: relative;
+		height: 1086px;
+		width: 100%;
+	}
+	#upPart6TopImg{
+		position: absolute;
+		width: 851px;
+		height: 566px;
+		top: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		font-family: "微软雅黑";
+	}
+	#upPart6TopImg>div{
+		width: 0;
+		height: 0;
+		border-top: 15px solid transparent;
+		border-bottom: 15px solid transparent;
+		border-right: 30px solid white;
+		position: absolute;
+		right: 0;
+		top: 265px;
+	}
+	#newWorld{
+		font-size: 50px;
+		display: inline-block;
+		margin-left: 15px;
+	}
+	#time{
+		font-size: 150px;
+		display: inline-block;
+	}
+	.newWorldAndTime{
+		font-size: 20px;
+		width: 150px;
+		line-height: 40px;
+	}
+	#topLeft{
+		width: 429px;
+		height: 566px;
+		position: absolute;
+		right: 0;
+		top: 0;
+		font-family: "微软雅黑";
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	#topLeft>h4{
+		color: rgba(93,93,93,1.00);
+		font-size: 20px;margin-bottom: 30px;
+	}
+	#topLeft>p{
+		font: 8px "宋体";
+		color: rgba(176,176,176,1.00);
+		width: 285px;
+		line-height: 30px;
+		margin-bottom: 50px;
+	}
+	#topLeft>button{
+		width: 105px;
+		height: 30px;
+		border: 1px solid rgba(232,80,79,1.00);
+		background: transparent;
+		font-family: "微软雅黑";
+		color: rgba(232,80,79,1.00);
+	}
+	#bottomleft,#bottomMiddle{
+		position: absolute;
+		width: 425px;
+		height: 520px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font: 22px "微软雅黑";
+		top: 566px;
+	}
+	#bottomleft{
+		
+		left: 1px;
+		background: rgba(232,80,79,1.00);
+		color: white;
+	}
+	#bottomleft>button{
+		width: 167px;
+		height: 40px;
+		border: 1px solid white;
+		background: transparent;
+		font: 18px "微软雅黑";
+		color: white;
+	}
+	#bottomMiddle{
+		left: 426px;		
+	}
+	#bottomMiddle>button{
+		width: 167px;
+		height: 40px;
+		border: 1px solid rgba(232,80,79,1.00);
+		background: transparent;
+		font: 18px "微软雅黑";
+		color: rgba(232,80,79,1.00);
+	}
+	#bottomImg,#upPart6BottomImg{
+		position: absolute;
+		top: 566px;
+		right: 0;
+	}
+	#upPart6BottomImg{
+		height: 520px;
+		width: 430px;
+		background-color: rgba(0,0,0,0.20);
+	}
+	#trangle2{
+		width: 0;
+		height: 0;
+		border-top: 15px solid transparent;
+		border-bottom: 15px solid transparent;
+		border-left: 30px solid white;
+		position: absolute;
+		top: 245px;
+	}
+	#part7{
+		position: relative;
+		width: 100%;
+		height: 600px;
+		background-color: white;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	#part7Head{
+		margin-top: 100px;
+		font: 20px "黑体";
+	}
+	.part7Contenx{
+		color:  rgba(159,159,159,1.00);
+		font: 10px "微软雅黑";
+	}
+	#rightFormInPart7{
+		width: 100%;
+		height: 500px;
+	}
+	#leftInPart7{
+		position: absolute;
+		top: 250px;
+		left: 135px;
+	}
+	#leftInPart7>h5{
+		font: 14px "黑体";
+		margin: 10px 0;
+	
+	}
+	#leftInPart7>p{
+		font: 5px "宋体";
+		color: rgba(159,159,159,1.00);
+		margin-bottom: 30px;
+	}
+	#rightFormInPart7{
+		width: 640px;
+		position: absolute;
+		top: 250px;
+		left: 500px;
+	}
+	.textFormInPart7{
+		display: inline-block;
+		box-sizing: border-box;
+		width: 300px;
+		height: 40px;
+		background: rgba(230,230,230,1.00);
+		font: 13px "宋体";
+		line-height: 40px;
+		padding: 0 10px;
+		margin: 10px 5px;
+		color:  rgba(159,159,159,1.00);
+	}
+	.textboxInPart7{
+		background-color: transparent;
+		width: 200px;
+	}
+	.textFormInPart71{
+		display: inline-block;
+		box-sizing: border-box;
+		width: 618px;
+		height: 120px;
+		background: rgba(230,230,230,1.00);
+		font: 13px "宋体";
+		line-height: 40px;
+		padding: 0 10px;
+		margin: 10px 5px;
+		color:  rgba(159,159,159,1.00);
+		position: relative;
+	}
+	.textAreaInPart7{
+		margin-top: 12px;
+		margin-left:  150px;
+		background: transparent;
+	}
+	#buttonInPart7{
+		width: 618px;
+		height: 40px;
+		margin-left: 5px;
+		color: black;
+		font-family: "微软雅黑";
+	}
+</style>
+</head>
+
+<body>
+	<div id="header">
+		
+		<span id="newWorld"><img id="headerBookImg" src="任务图片/任务7/新世界_logo.jpg">新世界</span>
+		<table id="headerCatalog">
+			<tr class="headerCatalogTr">
+				<td id="homePage" width="64" align="center" >首页</td>
+				<td width="64" align="center">最新活动</td>
+				<td width="64" align="center">项目介绍</td>
+				<td width="64" align="center">爱心社区</td>
+				<td width="64" align="center">联系我们</td>
+				<td id="signUp" width="64" align="center"><img id="signUpLogo" src="任务图片/任务7/登陆_logo.jpg">登录</td>
+			</tr>
+		</table>
+	</div>
+	<div id="mainbody">
+		<img style="margin-top: -1px;" src="任务图片/任务7/任务7图片_0000s_0008s_0005_图一.jpg" width="1280" height="854" alt=""/> 
+		<div id="part1">
+			<h2 id="part1Header">Time of new life</h2>
+			<p id="part1Text">新时代，年轻的人们让我们一起体验新生活，享受新生活</p>
+			<button id="part1Button" name="experience" type="button" >开始体验</button>
+		</div>
+		<div id="part2">
+			<div class="divInPart2">
+				<img src="任务图片/任务7/任务7图片_0000s_0007s_0007__编组_.jpg">
+				<p>打造全新世界观，让你更爱你的生活</p>
+			</div>
+			<div class="divInPart2">
+				<img src="任务图片/任务7/任务7图片_0000s_0007s_0006__编组_.jpg">
+				<p>丰富多彩的公益活动，发挥你的主人公意识</p>
+			</div>
+			<div class="divInPart2">
+				<img src="任务图片/任务7/任务7图片_0000s_0007s_0005__编组_.jpg">
+				<p>时尚的新理念，让你超前体验未知的生活</p>
+			</div>
+			<div class="divInPart2">
+				<img src="任务图片/任务7/任务7图片_0000s_0007s_0008__编组_.jpg">
+				<p style="margin-top: 35px; border-right: 0px;">完善的培养机制，培养你全新的世界观</p>
+			</div>
+		</div>
+		<div id="part3">
+			<img src="任务图片/任务7/任务7图片_0000s_0006s_0001__编组_.jpg">
+			<h1>关于新世界，你不知道的还有什么?</h1>
+		</div>
+		<div id="part4">
+			<img src="任务图片/任务7/任务7图片_0000s_0004s_0023_看地图.jpg">
+			<div id="divInPart4">
+				<h2>查找新世界城市活动信息</h2>
+				<div class="line" style="border-color: white;"></div>
+				<p>每个城市有不同的活动信息，请自主查询您所需要了解的城市</p>
+				<form id="formInPart4">
+				<div class="selecStyle">
+					<select name="country" class="searchCityActive" >
+						<option value="c1" selected="selected">中国</option>
+						<option value="c2" >其他</option>
+					</select>
+					</div>
+					<div class="selecStyle">
+					<select name="province" class="searchCityActive" >
+						<option value="" disabled selected>省份</option>
+						<option value="p1">北京</option>
+						<option value="p2">天津</option>
+						<option value="p3">陕西</option>
+						<option value="p4">四川</option>
+						<option value="p5">上海</option>
+					</select>
+					</div>
+					<div class="selecStyle">
+					<select name="city" class="searchCityActive">
+						<option value="" disabled selected>城市</option>
+						<option value="city1">北京</option>
+						<option value="city2">上海</option>
+						<option value="city3">成都</option>
+						<option value="city4">西安</option>
+						<option value="city5">广州</option>
+					</select>
+					</div>
+					<button id="searchActivity">搜索</button>
+				</form>
+			</div>
+		</div>
+		<div id="part5">
+			<img src="任务图片/任务7/任务7图片_0000s_0005s_0001_图三－图六.jpg" width="1002" height="400" alt=""/>
+			<div class="part5Content" id="part5Content1"><h5>北京活动</h5><p>新社区大联盟</p></div>
+			<div class="part5Content" id="part5Content2"><h5>上海活动</h5><p>夜上海新景区探索</p></div>
+			<div class="part5Content" id="part5Content3"><h5>深圳活动</h5><p>全新海岸线观点站</p></div>
+			<div class="part5Content" id="part5Content4"><h5>香港活动</h5><p>奢侈消费大派送</p></div>
+		</div>
+		<div id="part6">
+			<img src="任务图片/任务7/任务7图片_0000s_0003s_0012_图七.jpg" width="851" height="566" alt=""/>
+			<div id="upPart6TopImg">
+				<div id="trangle1"></div>
+				<p id="newWorld">新世界<p>
+				<p id="time">TIME<p>
+				<p class="newWorldAndTime">@新世界-北京 2016.04.01</p>
+			</div>
+			<div id="topLeft">
+				<h4>新世界／<span style="color: rgba(232,80,79,1.00);">01</span></h4>
+				<p>新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界新世界</p>
+				<button>更多详情</button>
+			</div>
+			<div id="bottomleft">
+				<p>新时代</p>
+				<p>关于爱生活的我们</p>
+				<div class="line" style="border-color: white;"></div>
+				<button>查看更多</button>
+			</div>
+			<div id="bottomMiddle">
+				<p>新时代</p>
+				<p>关于爱生活的我们</p>
+				<div class="line" style="border-color: darkgray;"></div>
+				<button>查看更多</button>
+			</div>
+			<img id="bottomImg" src="任务图片/任务7/任务7图片_0000s_0002s_0010__图像_.jpg" width="430" height="520" alt=""/> 
+			<div id="upPart6BottomImg">
+				<div id="trangle2"></div>
+			</div>
+		</div>
+		<div id="part7">
+			<p id="part7Head">成为我们的志愿者</p>
+			<div class="line" style="display: inline-block;color: rgba(232,80,79,1.00) "></div>
+			<p class="part7Contenx">新世界的大家庭需要每一个爱生活的人加入，如果你够年轻，有梦想，有激情</p>
+			<p class="part7Contenx">那就不要犹豫，快来加入我们，成为改变所有人生活的人</p>
+			<div id="formInPart7">
+				<div id="leftInPart7">
+					<h5>新世界志愿者协议</h5>
+					<p>加入新世界志愿的人必须。。。。。</p>
+					<h5>新世界志愿者权利</h5>
+					<p>加入新世界志愿的人享有。。。。。</p>
+					<h5>更多条款</h5>
+				</div>
+				<form id="rightFormInPart7" method="post" name="">
+					<span class="textFormInPart7">姓名：<input type="text" class="textboxInPart7" name="applicationName"></span>
+					<span class="textFormInPart7">年龄：<input type="text" class="textboxInPart7" name="applicationAge"></span>
+					<span class="textFormInPart7">联系方式：<input type="text" class="textboxInPart7" name="applicationName"></span>
+					<span class="textFormInPart7">联系地址：<input type="text" class="textboxInPart7" name="applicationName"></span>
+					<div class="textFormInPart71"><span style="position: absolute;top: px">请简单描述您梦想的生活：</span><textarea rows="6" cols="60" class="textAreaInPart7"></textarea></div>
+					<button id="buttonInPart7">提交申请</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div id="contactUs">
+			<h3>联系我们</h3>
+			<p>为了更好的获取我们新产品的资讯，您可以留下您的电子邮箱快速订阅我们的资讯</p>
+			<p>也可以通过以下方式关注我们的动态</p>
+			<form id="customsEmail" action="save.php" method="post">
+				<input id="customsEmailBox" type="text" name="emailAddress" value="someone@email.com">
+				<input id="customsEmailSubmit" type="submit" name="emailAddress" value="提 交">
+			</form>
+			<img src="任务图片/任务7/联系我们_logo.jpg" width="203" height="60" alt=""/> 
+		</div>
+		<div id="authority">
+			<span style="float: left;margin-left: 90px;">@2016新世界</span>
+			<span style="float: right;margin-right: 40px"><a href="#header">Back to top</a></span>
+		</div>
+	</div>
+</body>
+</html>

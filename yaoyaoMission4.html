@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>耀耀任务4</title>
+    <style type="text/css">
+        *{padding: 0;margin: 0;border: 0;}
+        table{
+            border-collapse: collapse;
+            width: 495px;
+            height: 495px;
+			font: 18px "黑体";
+        }
+        td{
+            border: 1px solid rgba(208,208,208,1.00);
+			width: 45px;
+			height: 45px;
+        }
+        #box{
+            width: 45px;
+            height: 45px;
+            box-sizing: border-box;
+            border-bottom: 10px solid blue;
+            background: red;
+        }
+        #orderBox{
+            width: 180px;
+            margin: 20px 10px 0 35px;
+            border: 1px solid rgba(208,208,208,1.00);
+        }
+        #orderSubmit{
+            width: 40px;
+            border: 1px solid rgba(208,208,208,1.00);
+            border-radius: 5px;
+            background: white;
+        }
+    </style>
+
+</head>
+<body>
+<table id="checkerboard">
+    <tr>
+        <th></th>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+        <th>6</th>
+        <th>7</th>
+        <th>8</th>
+        <th>9</th>
+        <th>10</th>
+    </tr>
+    <tr>
+        <th>1</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>2</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>3</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>4</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>5</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><div id="box"></div></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>6</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>7</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>8</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>9</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <th>10</th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<input type="text" id="orderBox" value="请输入指令"/>
+<button id="orderSubmit">执行</button>
+<script type="text/javascript">
+
+    removeVoidTag();
+
+
+    //这段JS代码是为了实现与设计图一样边框的效果 相当于初始化
+    var tableNode = document.getElementById("checkerboard");
+    tableNode = tableNode.childNodes[0];
+    var tableLength =  tableNode.childNodes.length;
+
+    for(var i = 1; i < tableLength; i++)
+    {
+        var cur_row = tableNode.childNodes[i];
+        if(cur_row)
+        {
+            if(i == 1)
+            {
+                for(var j = 1; j < cur_row.childNodes.length; j++)
+                {
+                    var cur_col = cur_row.childNodes[j];
+                    if(cur_col)
+                    {
+                        if(j == 1)
+                        {
+                            cur_col.style.borderLeftColor = "black";
+                        }
+                        cur_col.style.borderTopColor = "black";
+                        if(j == cur_row.childNodes.length-1)
+                        {
+                            cur_col.style.borderRightColor = "black";
+                        }
+                    }
+                }
+            }
+            cur_row.childNodes[1].style.borderLeftColor = "black";
+            cur_row.childNodes[cur_row.childNodes.length-1].style.borderRightColor = "black";
+            if(i == tableLength-1)
+            {
+                for(j = 1; j < cur_row.childNodes.length; j++)
+                {
+                    cur_col = cur_row.childNodes[j];
+                    if(cur_col)
+                    {
+                        if(j == 1)
+                        {
+                            cur_col.style.borderLeftColor = "black";
+                        }
+                        cur_col.style.borderBottomColor = "black";
+                        if(j == cur_row.childNodes.length-1)
+                        {
+                            cur_col.style.borderRightColor = "black";
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    //当鼠标点击文本框
+    document.getElementById("orderBox").onclick = function(){this.value = ""};
+
+    //当点击执行
+    document.getElementById("orderSubmit").onclick = function(){
+        var order = document.getElementById("orderBox").value;
+        var cube = document.getElementById("box"); //是当前小方块的div节点哦
+        var borderDirection = 0b0000; //上右下左 (从左到右)
+        //计算小方块朝向 注意下边if中兼容浏览器的语句
+        if((window.getComputedStyle ? window.getComputedStyle(cube,null).borderTopColor : cube.currentStyle.borderTopColor) == "rgb(0, 0, 255)"){
+            borderDirection = 0b1000;
+        }
+        else if((window.getComputedStyle ? window.getComputedStyle(cube,null).borderRightColor : cube.currentStyle.borderRightColor) == "rgb(0, 0, 255)"){
+            borderDirection = 0b0100;
+        }else if((window.getComputedStyle ? window.getComputedStyle(cube,null).borderBottomColor : cube.currentStyle.borderBottomColor) == "rgb(0, 0, 255)"){
+            borderDirection = 0b0010;
+        }else {
+            borderDirection = 0b0001;
+        }
+        switch (order){
+            case 'GO':
+                orderGO(cube,borderDirection);
+                break;
+            case 'TUN LEF':
+                borderDirection = orderTurnLeft(cube,borderDirection);
+                break;
+            case 'TUN RIG':
+                borderDirection = orderTurnRight(cube,borderDirection);
+                break;
+            case 'TUN BAC':
+                borderDirection = orderTurnBack(cube,borderDirection);
+                break;
+            default:
+                alert("Wrong Order!!");
+        }
+    };
+
+    //GO
+    function orderGO(cube,borderDirection){
+        var cubeLocArray = cube.parentNode.parentNode.childNodes;
+        var cubeRow = cubeLocArray[0].innerHTML;
+        var cubeCol = 0;
+        while (cubeLocArray[cubeCol] != cube.parentNode){
+            cubeCol++;
+        }
+        var cubePosition = [cubeRow,cubeCol];
+
+        if(cubeRow == 1 && borderDirection == 8){
+            alert("不能上移了!");
+        }else if(cubeRow == cubeLocArray.length - 1 && borderDirection == 2){
+            alert("不能下移了!");
+        }else if(cubeCol == 1 && borderDirection == 1){
+            alert("不能左移了!");
+        }else if(cubeCol == cubeLocArray.length - 1 && borderDirection == 4){
+            alert("不能右移了!");
+        }
+        else {
+            switch (borderDirection){
+                case 8: //上
+                    cube.parentNode.parentNode.previousSibling.childNodes[cubeCol].appendChild(cube);
+                    break;
+                case 4: //右
+                    cube.parentNode.nextSibling.appendChild(cube);
+                    break;
+                case 2: //下
+                    cube.parentNode.parentNode.nextSibling.childNodes[cubeCol].appendChild(cube);
+                    break;
+                case 1: //左
+                    cube.parentNode.previousSibling.appendChild(cube);
+                    break;
+                default:
+                    alert("Error!!");
+                    break;
+            }
+        }
+    }
+
+    // TUN LEF
+    function orderTurnLeft(cube,borderDirection){
+        if(borderDirection == 8){
+            borderDirection = 0b0001;
+        }else{
+            borderDirection = borderDirection << 1;
+        }
+        switch (borderDirection){
+            case 8: //上
+                cube.style.borderRight = "0px solid red";
+                cube.style.borderTop = "10px solid blue ";
+                break;
+            case 4: //右
+                cube.style.borderBottom = "0px solid red";
+                cube.style.borderRight = "10px solid blue ";
+                break;
+            case 2: //下
+                cube.style.borderLeft = "0px solid red";
+                cube.style.borderBottom = "10px solid blue ";
+                break;
+            case 1: //左
+                cube.style.borderTop = "0px solid red";
+                cube.style.borderLeft = "10px solid blue ";
+                break;
+            default:
+                alert("Error!!");
+                break;
+        }
+        return borderDirection;
+    }
+
+    // TUN RIG
+    function orderTurnRight(cube,borderDirection){
+        if(borderDirection == 1){
+            borderDirection = 0b1000;
+        }else{
+            borderDirection = borderDirection >> 1;
+        }
+        switch (borderDirection){
+            case 8: //上
+                cube.style.borderLeft = "0px solid red";
+                cube.style.borderTop = "10px solid blue ";
+                break;
+            case 4: //右
+                cube.style.borderTop = "0px solid red";
+                cube.style.borderRight = "10px solid blue ";
+                break;
+            case 2: //下
+                cube.style.borderRight = "0px solid red";
+                cube.style.borderBottom = "10px solid blue ";
+                break;
+            case 1: //左
+                cube.style.borderBottom = "0px solid red";
+                cube.style.borderLeft = "10px solid blue ";
+                break;
+            default:
+                alert("Error!!");
+                break;
+        }
+        return borderDirection;
+    }
+
+    // TUN BAC
+    function orderTurnBack(cube,borderDirection){
+
+        switch (borderDirection){
+            case 8: //上变下
+                borderDirection = 0b0010;
+                cube.style.borderTop = "0px solid red";
+                cube.style.borderBottom = "10px solid blue ";
+                break;
+            case 4: //右变左
+                borderDirection = 0b0001;
+                cube.style.borderRight = "0px solid red";
+                cube.style.borderLeft = "10px solid blue ";
+                break;
+            case 2: //下变上
+                borderDirection = 0b1000;
+                cube.style.borderBottom = "0px solid red";
+                cube.style.borderTop = "10px solid blue ";
+                break;
+            case 1: //左变右
+                borderDirection = 0b0100;
+                cube.style.borderLeft = "0px solid red";
+                cube.style.borderRight = "10px solid blue ";
+                break;
+            default:
+                alert("Error!!");
+        }
+        return borderDirection;
+    }
+
+    //去除空标签 常用
+    function removeVoidTag(){
+
+        var root=document.documentElement;
+        var spaceNodes = [];
+
+        lookforSpaceTextNode(root,spaceNodes);
+        for(var i=0; i<spaceNodes.length; i++) {
+            spaceNodes[i].parentNode.removeChild(spaceNodes[i]);
+        }
+    }
+
+    //找到所有空白标签函数
+    function lookforSpaceTextNode(node,spaceNodes) {
+        var nodeList = node.childNodes;
+
+        for(var i=0; i<nodeList.length; i++) {
+            var n = nodeList[i];
+            //alert(n.nodeValue);
+            if(n.nodeType == 1) {
+                lookforSpaceTextNode(n,spaceNodes);
+            }
+            else if(n.nodeType == 3 && !/\S/.test(n.nodeValue)){
+                spaceNodes[spaceNodes.length] = n;
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>
